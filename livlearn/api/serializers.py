@@ -1,9 +1,18 @@
 from rest_framework import serializers
-from livlearn.api.models import Test
+from livlearn.api.models import Tag, Link
 
 
-class TestSerializer(serializers.HyperlinkedModelSerializer):
+class TagSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = Test
+        model = Tag
+        fields = '__all__'
+
+
+class LinkSerializer(serializers.ModelSerializer):
+
+    tags = serializers.StringRelatedField(many=True)
+
+    class Meta:
+        model = Link
         fields = '__all__'

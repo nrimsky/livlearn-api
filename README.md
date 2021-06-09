@@ -23,3 +23,8 @@ python manage.py migrate api
 python manage.py makemigrations
 python manage.py runserver
 ```
+
+ Also if needed at the start run
+ ```
+python manage.py createsuperuser
+```

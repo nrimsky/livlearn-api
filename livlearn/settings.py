@@ -6,7 +6,7 @@ import dj_database_url
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Set DEBUG=False before committing to master!
-DEBUG = False
+DEBUG = True
 
 SECRET_KEY = "nlokg5p6b)y0=mbj5-7ruz!j$zk2^s2*h-4&)nac(7nh9*znas"
 ALLOWED_HOSTS = ["0.0.0.0", "localhost", "127.0.0.1"]
@@ -109,6 +109,7 @@ STATIC_URL = '/static/'
 # https://www.django-rest-framework.org/tutorial/quickstart/
 
 REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.TokenAuthentication',
         'rest_framework.authentication.SessionAuthentication',

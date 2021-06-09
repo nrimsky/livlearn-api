@@ -1,9 +1,14 @@
 from django.contrib import admin
-from livlearn.api.models import Test
+from livlearn.api.models import Link, Tag
 
 
-class TestAdmin(admin.ModelAdmin):
+class LinkAdmin(admin.ModelAdmin):
     pass
 
 
-admin.site.register(Test, TestAdmin)
+class TagAdmin(admin.ModelAdmin):
+    pass
+
+
+admin.site.register(Link, LinkAdmin)
+admin.site.register(Tag, TagAdmin)
