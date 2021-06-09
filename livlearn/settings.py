@@ -6,7 +6,7 @@ import dj_database_url
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Set DEBUG=False before committing to master!
-DEBUG = True
+DEBUG = False
 
 SECRET_KEY = "nlokg5p6b)y0=mbj5-7ruz!j$zk2^s2*h-4&)nac(7nh9*znas"
 ALLOWED_HOSTS = ["0.0.0.0", "localhost", "127.0.0.1"]
