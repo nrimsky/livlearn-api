@@ -14,7 +14,3 @@ from livlearn.settings import DEBUG
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'livlearn.settings')
 application = get_wsgi_application()
-
-if not DEBUG:
-    from whitenoise.django import DjangoWhiteNoise
-    application = DjangoWhiteNoise(application)
