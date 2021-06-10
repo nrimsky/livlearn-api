@@ -4,6 +4,7 @@ from rest_framework import generics
 from rest_framework import filters
 from django_filters.rest_framework import DjangoFilterBackend, MultipleChoiceFilter, CharFilter, FilterSet, ModelMultipleChoiceFilter
 from django_filters.fields import CSVWidget
+from rest_framework.pagination import PageNumberPagination
 
 
 class LinkFilter(FilterSet):
@@ -24,11 +25,18 @@ class LinkFilter(FilterSet):
         fields = ['tags', 'type', 'level', 'name', 'description', 'tagline']
 
 
+class LargeResultsSetPagination(PageNumberPagination):
+    page_size = 30
+    page_size_query_param = 'page_size'
+    max_page_size = 10000
+
+
 class LinkListView(generics.ListAPIView):
     serializer_class = LinkSerializer
     queryset = Link.objects.all()
     filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
     filterset_class = LinkFilter
+    pagination_class = LargeResultsSetPagination
     search_fields = ['name', 'description', 'tagline', 'tags']
     ordering_fields = ['created_at']
     ordering = ['created_at']
