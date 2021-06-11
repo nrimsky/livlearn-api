@@ -37,7 +37,7 @@ class LinkListView(generics.ListAPIView):
     filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
     filterset_class = LinkFilter
     pagination_class = LargeResultsSetPagination
-    search_fields = ['name', 'description', 'tagline', 'tags']
+    search_fields = ['name', 'description', 'tagline', 'tags__name']
     ordering_fields = ['created_at']
     ordering = ['created_at']
 
