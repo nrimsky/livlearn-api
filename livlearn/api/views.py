@@ -2,13 +2,22 @@ from livlearn.api.models import Link, Tag
 from livlearn.api.serializers import LinkSerializer, TagSerializer
 from rest_framework import generics
 from rest_framework import filters
-from django_filters.rest_framework import DjangoFilterBackend, MultipleChoiceFilter, CharFilter, FilterSet, ModelMultipleChoiceFilter
+from django_filters.rest_framework import DjangoFilterBackend, MultipleChoiceFilter, CharFilter, FilterSet, \
+    ModelMultipleChoiceFilter
 from django_filters.fields import CSVWidget
 from rest_framework.pagination import PageNumberPagination
 
 
-class LinkFilter(FilterSet):
+class IdsInFilterBackend(filters.BaseFilterBackend):
+    def filter_queryset(self, request, queryset, view):
+        ids = request.query_params.get('id')
+        if ids:
+            ids = ids.split(",")
+            return queryset.filter(id__in=ids)
+        return queryset
 
+
+class LinkFilter(FilterSet):
     name = CharFilter(lookup_expr='icontains')
     description = CharFilter(lookup_expr='icontains')
     tagline = CharFilter(lookup_expr='icontains')
@@ -34,7 +43,7 @@ class LargeResultsSetPagination(PageNumberPagination):
 class LinkListView(generics.ListAPIView):
     serializer_class = LinkSerializer
     queryset = Link.objects.all()
-    filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
+    filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter, IdsInFilterBackend]
     filterset_class = LinkFilter
     pagination_class = LargeResultsSetPagination
     search_fields = ['name', 'description', 'tagline', 'tags__name']
