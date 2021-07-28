@@ -18,6 +18,7 @@ git push dokku master
 ## running locally
 
 Set `DEBUG=True` in `livlearn/settings.py`
+
 ```
 python manage.py migrate api
 python manage.py makemigrations
