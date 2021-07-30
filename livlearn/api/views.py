@@ -1,5 +1,5 @@
-from livlearn.api.models import Link, Tag
-from livlearn.api.serializers import LinkSerializer, TagSerializer
+from livlearn.api.models import Link, Tag, FormSubmission
+from livlearn.api.serializers import LinkSerializer, TagSerializer, FormSubmissionSerializer
 from rest_framework import generics
 from rest_framework import filters
 from django_filters.rest_framework import DjangoFilterBackend, MultipleChoiceFilter, CharFilter, FilterSet, \
@@ -58,3 +58,8 @@ class TagListView(generics.ListAPIView):
     ordering = ['name']
     ordering_fields = ['name']
     search_fields = ['name']
+
+
+class FormSubmissionView(generics.CreateAPIView):
+    serializer_class = FormSubmissionSerializer
+    queryset = FormSubmission.objects.all()

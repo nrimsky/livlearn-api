@@ -2,7 +2,6 @@ from django.db import models
 
 
 class Link(models.Model):
-
     created_at = models.DateTimeField(auto_now_add=True)
 
     ADVANCED = 'AD'
@@ -71,3 +70,10 @@ class Tag(models.Model):
         return self.name
 
 
+class FormSubmission(models.Model):
+    submitted_at = models.DateTimeField(auto_now_add=True)
+    form_name = models.CharField(max_length=30)
+    content = models.TextField(max_length=5000)
+
+    def __str__(self):
+        return self.form_name
