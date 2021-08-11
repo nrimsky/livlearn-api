@@ -30,6 +30,8 @@ class Link(models.Model):
     VIDEO = "VI"
     TOOL = "TO"
     OTHER = "OT"
+    DOCUMENTATION = "DO"
+    FORUM = "FO"
 
     TYPE_CHOICES = [
         (PODCAST, 'Podcast'),
@@ -40,7 +42,9 @@ class Link(models.Model):
         (COURSE, 'Course'),
         (VIDEO, 'Video'),
         (TOOL, 'Tool'),
-        (OTHER, 'Other')
+        (OTHER, 'Other'),
+        (DOCUMENTATION, 'Documentation'),
+        (FORUM, 'Forum')
     ]
     type = models.CharField(
         max_length=2,
