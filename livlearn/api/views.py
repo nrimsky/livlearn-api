@@ -58,6 +58,7 @@ class TagListView(generics.ListAPIView):
     ordering = ['name']
     ordering_fields = ['name']
     search_fields = ['name']
+    pagination_class = LargeResultsSetPagination
 
 
 class FormSubmissionView(generics.CreateAPIView):
