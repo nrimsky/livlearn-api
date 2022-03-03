@@ -1,6 +1,10 @@
 # livlearn api 
 
-https://api.livlearn.howshouldilearn.com/
+This was the backend of the livlearn web app which I built to streamline the collecting, sharing and curating of online learning content, including books, videos, blogs, courses and podcasts. It is based on Django Rest Framework. livlearn is no longer deployed anywhere. I may redeploy it if there is significant interest from anyone. The web app also used Firebase alongside the api to enable real time editing in the drag and drop list editor.
+
+# Original deployment plan
+
+When it was live, this api was deployed on a Digital Ocean server with Dokku (https://dokku.com/) which ended up being a cheap and reasonably straightforward alternative to Heroku. 
 
 ## pushing to remote git repo
 
